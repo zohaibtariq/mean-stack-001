@@ -1,0 +1,29 @@
+{
+  "name": "Mean Stack Blog",
+  "version": "1.0.0",
+  "description": "Mean Stack Blog",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zohaibtariq/mean-stack-blog.git"
+  },
+  "keywords": [
+    "Mean",
+    "Stack",
+    "Blog",
+    "Application"
+  ],
+  "author": "Zohaib Tariq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zohaibtariq/mean-stack-blog/issues"
+  },
+  "homepage": "https://github.com/zohaibtariq/mean-stack-blog#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
