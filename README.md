@@ -1,2 +1,2 @@
-# mean-stack-001
-Mean stack application using angular js
+# mean-stack-blog
+Mean stack blog application mainly using mongodb, express, angular (angular js 5), node js
