@@ -43,3 +43,4 @@ Thumbs.db
 
 /config
 /client/node_modules
+/client/dist
