@@ -4,28 +4,42 @@
 
 const express = require('express');
 const app = express();
+const router = express.Router();
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 const config = require('./config/database');
 const path = require('path');
+const authentication = require('./routes/authentication')(router);
+var bodyParser = require('body-parser');
 
-mongoose.Promise = global.Promise;
-
-//mongoose.connect(config.uri, (err) => {
-mongoose.createConnection(config.uri, (err) => {
-    useMongoClient: true;
-    if(err)
-        console.log('Failed to connect with database : ', err);
-    else
-        //console.log(config.secret);
-        console.log('Connected to database : ' + config.db);
+//mongoose.createConnection(config.uri, (err) => {
+// Database Connection
+mongoose.connect(config.uri, {
+    useMongoClient: true,
+}, (err) => {
+    // Check if database was able to connect
+    if (err) {
+        console.log('Could NOT connect to database: ', err); // Return error message
+    } else {
+        console.log('Connected to ' + config.db); // Return success message
+    }
 });
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
+//Provide static directory for front end
 app.use(express.static(__dirname + '/client/dist/'));
+
+app.use('/authentication', authentication);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/client/dist/index.html'));
 });
 
-app.listen(8080, () => {
-    console.log('Listening on http://localhost:8080')
+app.listen(81, () => {
+    console.log('Listening on http://localhost:81')
 });
