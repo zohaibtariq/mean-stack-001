@@ -30,11 +30,9 @@ module.exports = (router) => {
                             res.json({success: true, message: 'User saved!'});
                         }
                     });
-                    
                 }
             }
         }
-        //res.send('hell2');
     });
     return router;
 };
