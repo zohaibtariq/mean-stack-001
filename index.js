@@ -15,14 +15,14 @@ const port = config.port || 800 || 8080;
 
 //mongoose.createConnection(config.uri, (err) => {
 // Database Connection
-mongoose.connect(config.uri, {
+mongoose.connect(config.uri+config.database, {
     useMongoClient: true,
 }, (err) => {
     // Check if database was able to connect
     if (err) {
-        console.log('Could NOT connect to database: ', err); // Return error message
+        console.log('Could not connect to database : ' + config.database , err); // Return error message
     } else {
-        console.log('Connected to ' + config.db); // Return success message
+        console.log('Connected to ' + config.database); // Return success message
     }
 });
 
