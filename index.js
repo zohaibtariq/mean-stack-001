@@ -10,7 +10,8 @@ mongoose.Promise = global.Promise;
 const config = require('./config/database');
 const path = require('path');
 const authentication = require('./routes/authentication')(router);
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
+const port = config.port || 800 || 8080;
 
 //mongoose.createConnection(config.uri, (err) => {
 // Database Connection
@@ -40,6 +41,6 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/client/dist/index.html'));
 });
 
-app.listen(81, () => {
-    console.log('Listening on http://localhost:81')
+app.listen(port, () => {
+    console.log('Listening on http://localhost:'+port)
 });
