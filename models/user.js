@@ -14,7 +14,6 @@ const userSchema = new Schema({
     password: { type: String, required: true }
 });
 
-/*
 userSchema.pre('save', function(next){
     if(!this.isModified('password'))
         return next();
@@ -29,6 +28,5 @@ userSchema.pre('save', function(next){
 userSchema.methods.comparePassword = (password) => {
     return bcrypt.compareSync(password, this.password);
 };
-*/
 
 module.exports = mongoose.model('User', userSchema);
